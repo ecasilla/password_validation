@@ -28,14 +28,14 @@ $(document).ready(function($) {
       formdiv.removeClass('has-error has-success').addClass('has-warning');
       span.removeClass(" glyphicon-ok glyphicon-remove").addClass('glyphicon-warning-sign') ;
 
-     $('label.control-label').attr('for', 'inputWarning2').text('warning');
+     $('label.control-label').attr('for', 'inputWarning2').text('Add another number of special character');
 
 //Finally throw Error!
     } else {
       formdiv.removeClass('has-warning has-success').addClass('has-error');
       span.removeClass(" glyphicon-warning-sign glyphicon-remove").addClass('glyphicon-remove') ;
 
-      $('label.control-label').attr('for', 'inputError2').text('error');
+      $('label.control-label').attr('for', 'inputError2').text('Weak Must Be 8 characters long and include 2 numbers and one special character');
 
     }
   });
