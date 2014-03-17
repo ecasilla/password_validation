@@ -1,17 +1,20 @@
 $(document).ready(function($) {
 
   var input = $('input.form-control');
-  console.log(input);
+
+  function noPassword () {
+    $('label.control-label').text("Your Password cannot be password");
+  }
+
   function patternMatcher (argument) {
     // at least one number, one lowercase and one special character
     // at least eight characters
-    console.log(argument);
     var pattern = /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$@%&? "]).*$/;
       return pattern.test(argument);
  }
 
   input.on('keypress', function(event) {
-    console.log(event);
+
     var password = $('input.form-control').val();
     var formdiv = $('div#mainDiv');
     var span = $('span.glyphicon');
