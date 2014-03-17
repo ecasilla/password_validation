@@ -2,14 +2,18 @@ $(document).ready(function($) {
 
   var input = $('input.form-control');
 
-  function noPassword () {
-    $('label.control-label').text("Your Password cannot be password");
+  function noPassword (user_input) {
+    if (!user_input === 'password' || 'Password') {
+      $('label.control-label').text("Your Password cannot be password");
+    } else{
+      $('label.control-label').attr('for', 'inputError2').text('Weak Must Be 8 characters long and include 2 numbers and 2 special characters');
+    };
   }
 
   function patternMatcher (argument) {
-    // at least one number, one lowercase and one special character
+    // at least two number, one lowercase and two special character
     // at least eight characters
-    var pattern = /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$@%&? "]).*$/;
+    var pattern = /^.*(?=.{6,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$@%&? "]).*$/;
       return pattern.test(argument);
  }
 
@@ -37,9 +41,7 @@ $(document).ready(function($) {
     } else {
       formdiv.removeClass('has-warning has-success').addClass('has-error');
       span.removeClass(" glyphicon-warning-sign glyphicon-remove").addClass('glyphicon-remove') ;
-
-      $('label.control-label').attr('for', 'inputError2').text('Weak Must Be 8 characters long and include 2 numbers and one special character');
-
+      noPassword(password);
     }
   });
 });
