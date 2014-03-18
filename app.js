@@ -16,11 +16,11 @@ $(document).ready(function($) {
   function noPassword (user_input) {
     if (user_input == 'passwor') {
       $('label.control-label').text("Your password cannot be password!");
-    } else{
+    } else {
       $('label.control-label').attr('for', 'inputError2').text('Weak Must Be 8 characters long and include 2 numbers and 2 special characters');
     };
   }
-//checks the password validation
+//checks the password validation is 2 numbers 2 special characters and 8 letters :)
   function patternMatcher (argument) {
     // Abandon all hope, ye who enter here.
     // here be dragons
@@ -28,6 +28,15 @@ $(document).ready(function($) {
       return pattern.test(argument);
  }
 
+//checks to see if the password is and email!
+ function validateEmail(email) {
+      console.log(email)
+    var emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if (emailRegex.test(email) == true){
+        $('label.control-label').text("Your password cannot be an email!");
+      }
+    return  emailRegex.test(email) ;
+}
   input.on('keypress', function(event) {
 
     var password = $('input.form-control').val();
@@ -42,7 +51,7 @@ $(document).ready(function($) {
       $('label.control-label').attr('for', 'inputSuccess2').text('Success');
 
 //Check to see if greater than 8 chars also warn
-    } else if (password.length > 7 ){
+    } else if (password.length > 7  && !validateEmail(password)){
       formdiv.removeClass('has-error has-success').addClass('has-warning');
       span.removeClass(" glyphicon-ok glyphicon-remove").addClass('glyphicon-warning-sign') ;
 
@@ -53,6 +62,7 @@ $(document).ready(function($) {
       formdiv.removeClass('has-warning has-success').addClass('has-error');
       span.removeClass(" glyphicon-warning-sign glyphicon-remove").addClass('glyphicon-remove') ;
       noPassword(password);
+      validateEmail(password);
     }
   });
 });
