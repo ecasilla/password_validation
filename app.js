@@ -14,7 +14,8 @@ $(document).ready(function($) {
 //This function checks to make sure that the input is NOT the word password
 //theres a edge case the string can't have the letter d at the end WERID!!!!!
   function noPassword (user_input) {
-    if (user_input == 'passwor') {
+    console.log(user_input);
+    if (user_input == 'password') {
       $('label.control-label').text("Your password cannot be password!");
     } else {
       $('label.control-label').attr('for', 'inputError2').text('Weak Must Be 8 characters long and include 2 numbers and 2 special characters');
@@ -37,7 +38,7 @@ $(document).ready(function($) {
       }
     return  emailRegex.test(email) ;
 }
-  input.on('keypress', function(event) {
+  input.on('keyup', function(event) {
 
     var password = $('input.form-control').val();
     var formdiv = $('div#mainDiv');
