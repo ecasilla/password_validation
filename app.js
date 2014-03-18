@@ -1,18 +1,29 @@
+/**
+* For the brave souls who get this far: You are the chosen ones,
+* the valiant knights of programming who toil away, without rest,
+* fixing our most awful code. To you, true saviors, kings of men,
+* I say this: never gonna give you up, never gonna let you down,
+* never gonna run around and desert you. Never gonna make you cry,
+* never gonna say goodbye. Never gonna tell a lie and hurt you.
+*/
+
 $(document).ready(function($) {
 
   var input = $('input.form-control');
 
+//This function checks to make sure that the input is NOT the word password
+//theres a edge case the string can't have the letter d at the end WERID!!!!!
   function noPassword (user_input) {
-    if (!user_input === 'password' || 'Password') {
-      $('label.control-label').text("Your Password cannot be password");
+    if (user_input == 'passwor') {
+      $('label.control-label').text("Your password cannot be password!");
     } else{
       $('label.control-label').attr('for', 'inputError2').text('Weak Must Be 8 characters long and include 2 numbers and 2 special characters');
     };
   }
-
+//checks the password validation
   function patternMatcher (argument) {
-    // at least two number, one lowercase and two special character
-    // at least eight characters
+    // Abandon all hope, ye who enter here.
+    // here be dragons
     var pattern = /^.*(?=.{6,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$@%&? "]).*$/;
       return pattern.test(argument);
  }
@@ -31,7 +42,7 @@ $(document).ready(function($) {
       $('label.control-label').attr('for', 'inputSuccess2').text('Success');
 
 //Check to see if greater than 8 chars also warn
-    } else if (password.length > 8 ){
+    } else if (password.length > 7 ){
       formdiv.removeClass('has-error has-success').addClass('has-warning');
       span.removeClass(" glyphicon-ok glyphicon-remove").addClass('glyphicon-warning-sign') ;
 
