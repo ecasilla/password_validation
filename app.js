@@ -14,7 +14,6 @@ $(document).ready(function($) {
 //This function checks to make sure that the input is NOT the word password
 //theres a edge case the string can't have the letter d at the end WERID!!!!!
   function noPassword (user_input) {
-    console.log(user_input);
     if (user_input == 'password') {
       $('label.control-label').text("Your password cannot be password!");
     } else {
@@ -31,7 +30,6 @@ $(document).ready(function($) {
 
 //checks to see if the password is and email!
  function validateEmail(email) {
-      console.log(email)
     var emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       if (emailRegex.test(email) == true){
         $('label.control-label').text("Your password cannot be an email!");
@@ -52,7 +50,7 @@ $(document).ready(function($) {
       $('label.control-label').attr('for', 'inputSuccess2').text('Success');
 
 //Check to see if greater than 8 chars also warn
-    } else if (password.length > 7  && !validateEmail(password)){
+    } else if (password.length > 8  && !validateEmail(password)){
       formdiv.removeClass('has-error has-success').addClass('has-warning');
       span.removeClass(" glyphicon-ok glyphicon-remove").addClass('glyphicon-warning-sign') ;
 
