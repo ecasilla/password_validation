@@ -17,7 +17,7 @@ $(document).ready(function($) {
     if (user_input == 'password') {
       $('label.control-label').text("Your password cannot be password!");
     } else {
-      $('label.control-label').attr('for', 'inputError2').text('Weak Must Be 8 characters long and include 2 numbers and 2 special characters');
+      $('label.control-label').attr('for', 'inputError2').text('Must Be 8 characters long and include 2 numbers and 2 special characters');
     };
   }
 //checks the password validation is 2 numbers 2 special characters and 8 letters :)
@@ -40,26 +40,29 @@ $(document).ready(function($) {
 
     var password = $('input.form-control').val();
     var formdiv = $('div#mainDiv');
-    var span = $('span.glyphicon');
+    var span = $('span');
 
 //Check to see if password is a correct match
     if (patternMatcher(password)) {
       formdiv.removeClass('has-error has-warning').addClass('has-success');
-      span.removeClass(" glyphicon-warning-sign glyphicon-remove").addClass('glyphicon-ok') ;
+      span.text("good").addClass('textFix');
+    //  span.removeClass(" glyphicon-warning-sign glyphicon-remove").addClass('glyphicon-ok') ;
 
       $('label.control-label').attr('for', 'inputSuccess2').text('Success');
 
 //Check to see if greater than 8 chars also warn
     } else if (password.length > 8  && !validateEmail(password)){
       formdiv.removeClass('has-error has-success').addClass('has-warning');
-      span.removeClass(" glyphicon-ok glyphicon-remove").addClass('glyphicon-warning-sign') ;
-
+      span.text("fair").addClass('textFix');
+     // span.removeClass(" glyphicon-ok glyphicon-remove").addClass('glyphicon-warning-sign') ;
      $('label.control-label').attr('for', 'inputWarning2').text('Add another number of special character');
 
 //Finally throw Error!
     } else {
       formdiv.removeClass('has-warning has-success').addClass('has-error');
-      span.removeClass(" glyphicon-warning-sign glyphicon-remove").addClass('glyphicon-remove') ;
+      span.text("weak").addClass('textFix');
+
+     // span.removeClass(" glyphicon-warning-sign glyphicon-remove").addClass('glyphicon-remove') ;
       noPassword(password);
       validateEmail(password);
     }
