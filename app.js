@@ -43,10 +43,9 @@ $(document).ready(function($) {
     var span = $('span');
 
 //Check to see if password is a correct match
-    if (patternMatcher(password)) {
+    if (patternMatcher(password) && !validateEmail(password)) {
       formdiv.removeClass('has-error has-warning').addClass('has-success');
       span.text("good").addClass('textFix');
-    //  span.removeClass(" glyphicon-warning-sign glyphicon-remove").addClass('glyphicon-ok') ;
 
       $('label.control-label').attr('for', 'inputSuccess2').text('Success');
 
@@ -54,7 +53,6 @@ $(document).ready(function($) {
     } else if (password.length > 8  && !validateEmail(password)){
       formdiv.removeClass('has-error has-success').addClass('has-warning');
       span.text("fair").addClass('textFix');
-     // span.removeClass(" glyphicon-ok glyphicon-remove").addClass('glyphicon-warning-sign') ;
      $('label.control-label').attr('for', 'inputWarning2').text('Add another number of special character');
 
 //Finally throw Error!
@@ -62,7 +60,6 @@ $(document).ready(function($) {
       formdiv.removeClass('has-warning has-success').addClass('has-error');
       span.text("weak").addClass('textFix');
 
-     // span.removeClass(" glyphicon-warning-sign glyphicon-remove").addClass('glyphicon-remove') ;
       noPassword(password);
       validateEmail(password);
     }
