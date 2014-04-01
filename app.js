@@ -12,7 +12,6 @@ $(document).ready(function($) {
   var input = $('input.form-control');
 
 //This function checks to make sure that the input is NOT the word password
-//theres a edge case the string can't have the letter d at the end WERID!!!!!
   function noPassword (user_input) {
     if (user_input == 'password') {
       $('label.control-label').text("Your password cannot be password!");
@@ -39,26 +38,26 @@ $(document).ready(function($) {
   input.on('keyup', function(event) {
 
     var password = $('input.form-control').val();
-    var formdiv = $('div#mainDiv');
-    var span = $('span');
+    var formdiv = $('#mainDiv');
+    var $span = $('span');
 
 //Check to see if password is a correct match
     if (patternMatcher(password) && !validateEmail(password)) {
       formdiv.removeClass('has-error has-warning').addClass('has-success');
-      span.text("good").addClass('textFix');
+      $span.text("good").addClass('textFix');
 
       $('label.control-label').attr('for', 'inputSuccess2').text('Success');
 
 //Check to see if greater than 8 chars also warn
     } else if (password.length > 8  && !validateEmail(password)){
       formdiv.removeClass('has-error has-success').addClass('has-warning');
-      span.text("fair").addClass('textFix');
+      $span.text("fair").addClass('textFix');
      $('label.control-label').attr('for', 'inputWarning2').text('Add another number of special character');
 
 //Finally throw Error!
     } else {
       formdiv.removeClass('has-warning has-success').addClass('has-error');
-      span.text("weak").addClass('textFix');
+      $span.text("weak").addClass('textFix');
 
       noPassword(password);
       validateEmail(password);
