@@ -65,6 +65,10 @@ function emptyPassword (password) {
      $('#passwordLabel').attr('for', 'inputWarning2').text('Add another number of special character');
 
 //Finally throw Error!
+    } else if (password.length === 0 ){
+      $passwordDiv.removeClass('has-warning has-success').addClass('has-error');
+      $passwordSpan.text("invalid").addClass('textFix');
+       $('#passwordLabel').attr('for', 'inputWarning2').text('Password cannot be empty');
     } else {
       $passwordDiv.removeClass('has-warning has-success').addClass('has-error');
       $passwordSpan.text("weak").addClass('textFix');
@@ -99,17 +103,23 @@ function emptyPassword (password) {
       var $password = $('#password').val();
       var $confirmDiv = $("#confirmDiv");
 
-      if ($confirm.val().toString() === $password) {
-        $confirmDiv.removeClass('has-error has-warning').addClass('has-success');
+      if ($confirm.val() === "") {
+        $confirmDiv.removeClass('has-success').addClass('has-error');
+        $confirmSpan.text("invalid").addClass('textFix');
+
+        $('#confirmLabel').attr('for', 'inputError2').text('Password cannot be empty');
+
+      } else if ($confirm.val().toString() === $password){
+        $confirmDiv.removeClass('has-error').addClass('has-success');
         $confirmSpan.text("good").addClass('textFix');
 
         $('#confirmLabel').attr('for', 'inputSuccess2').text('Success');
 
       } else {
-        $confirmDiv.addClass('has-error');
+        $confirmDiv.removeClass('has-success').addClass('has-error');
         $confirmSpan.text("invalid").addClass('textFix');
 
-        $('#confirmLabel').attr('for', 'inputSuccess2').text('Passwords Do Not Match');
+        $('#confirmLabel').attr('for', 'inputError2').text('Passwords Do Not Match');
       }
   });
 
