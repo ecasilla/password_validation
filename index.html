@@ -4,22 +4,72 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="main.css">
-    <title>Password</title>
+    <title>SSI</title>
   </head>
   <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-2">
-            <form role="form">
-              <div class="form-group has-feedback" id="mainDiv">
-                  <label >Password</label>
-                  <input type="password" class="form-control" id="">
-                  <label class="control-label" for=""></label>
-                  <span class="form-control-feedback"></span>
-              </div>
-            </form>
+<div class="divider"></div>
+    <div class="container">
+
+      <form role="form">
+
+        <div class="row">
+          <div class="col-xs-8">
+            <div class="form-group has-feedback" id="emailDiv">
+            <label for="InputEmail">Email</label>
+            <input type="email" class="form-control" placeholder="Enter email" id="emailInput">
+            <label class="control-label" for="" id="emailLabel"></label>
+            <span class="form-control-feedback" id="emailSpan"></span>
+            </div>
+          </div>
         </div>
-    </div>
+
+<div class="divider"></div>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="form-group has-feedback" id="passwordDiv">
+            <label >Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter Password">
+            <label class="control-label" id="passwordLabel" for=""></label>
+            <span class="form-control-feedback" id="passwordSpan"></span>
+          </div>
+        </div>
+
+        <div class="col-xs-6">
+          <div class="form-group has-feedback" id="confirmDiv">
+            <label>Confirm Password</label>
+            <input type="password" class="form-control" id="confirm" placeholder="Enter Password">
+            <label class="control-label" id="confirmLabel" for=""></label>
+            <span class="form-control-feedback" id="confirmSpan"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+    <div class="row">
+        <div class="col-xs-6">
+          <label for="">Security Question</label>
+          <select class="form-control">
+            <option value="" disable selected style='display:none;'>Pick a question from the list...</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+        <div class="col-xs-6">
+          <div class="form-group has-feedback" id="securityDiv">
+            <label for="">Answer to Security Question</label>
+            <input type="text" class="form-control" id="security">
+            <label class="control-label" id="securityLabel" for=""></label>
+            <span class="form-control-feedback" id="securitySpan"></span>
+          </div>
+        </div>
+
+      </div>
+    </form>
+
 </div>
 
       <script src="bower_components/jquery/dist/jquery.js"></script>

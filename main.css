@@ -1,3 +1,44 @@
 .textFix {
   margin-right: 20px;
 }
+
+.divider{
+  margin-bottom: 30px
+}
+
+.has-error .form-control{
+  border-color: #ff0000;
+}
+
+.has-error .form-control-feedback{
+  color: #ff0000;
+}
+
+.has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline{
+  color: #ff0000;
+}
+
+.has-warning .form-control{
+  border-color: #fe821b;
+}
+
+.has-warning .help-block, .has-warning .control-label, .has-warning .radio, .has-warning .checkbox, .has-warning .radio-inline, .has-warning .checkbox-inline{
+  color: #fe821b;
+}
+
+.has-warning .form-control-feedback{
+  color: #fe821b;
+}
+
+.has-success .help-block, .has-success .control-label, .has-success .radio, .has-success .checkbox, .has-success .radio-inline, .has-success .checkbox-inline{
+  color:#1fa300;
+}
+
+.has-success .form-control-feedback{
+  color:#1fa300;
+}
+
+.has-success .form-control{
+  border-color: #1fa300;
+}
+
