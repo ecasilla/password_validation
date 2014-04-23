@@ -1,6 +1,18 @@
 .textFix {
   margin-right: 20px;
 }
+.glyphicon{
+ top: 30px;
+}
+/*#securityIcon{
+  left: 100%;
+  top: -66px;
+}
+
+#passwordIcon{
+  top: -62px;
+  left: 102%;
+}*/
 
 .divider{
   margin-bottom: 30px
@@ -42,3 +54,15 @@
   border-color: #1fa300;
 }
 
+.glyphicon-ok{
+  color:#1fa300;
+  right: 20px;
+}
+.glyphicon-warning-sign{
+  color: #fe821b;
+  right: 20px;
+}
+.glyphicon-remove{
+  color: #ff0000;
+  right: 20px;
+}

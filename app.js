@@ -57,21 +57,24 @@ function emptyPassword (password) {
       $passwordSpan.text("good").addClass('textFix');
 
       $('#passwordLabel').attr('for', 'inputSuccess2').text('Success');
+      $('#passwordIcon').removeClass('glyphicon-remove glyphicon-warning-sign').addClass('glyphicon-ok')
 
 //Check to see if greater than 8 chars also warn
     } else if (password.length >= 8  && !validateEmail(password)){
       $passwordDiv.removeClass('has-error has-success').addClass('has-warning');
       $passwordSpan.text("fair").addClass('textFix');
-     $('#passwordLabel').attr('for', 'inputWarning2').text('Add another number of special character');
-
+      $('#passwordLabel').attr('for', 'inputWarning2').text('Add another number or special character');
+      $('#passwordIcon').removeClass('glyphicon-remove').addClass('glyphicon-warning-sign');
 //Finally throw Error!
     } else if (password.length === 0 ){
       $passwordDiv.removeClass('has-warning has-success').addClass('has-error');
       $passwordSpan.text("invalid").addClass('textFix');
        $('#passwordLabel').attr('for', 'inputWarning2').text('Password cannot be empty');
+       $('#passwordIcon').addClass('glyphicon-remove');
     } else {
       $passwordDiv.removeClass('has-warning has-success').addClass('has-error');
       $passwordSpan.text("weak").addClass('textFix');
+      $('#passwordIcon').addClass('glyphicon-remove');
 
       noPassword(password);
       validateEmail(password);
@@ -84,15 +87,23 @@ function emptyPassword (password) {
 
    var emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-      if ( emailRegex.test($email.val()) ){
+    if ($email.val().length === 0) {
+        $emailDiv.removeClass('has-success').addClass('has-error');
+        $emailSpan.text("invalid").addClass('textFix');
+
+        $('#emailLabel').attr('for', 'inputError2').text('Email cannot be empty');
+    } else if ( emailRegex.test($email.val()) ){
         $emailDiv.removeClass('has-error').addClass('has-success');
         $emailSpan.text("good").addClass('textFix');
+        $('#emailIcon').removeClass('glyphicon-remove').addClass('glyphicon-ok')
+
 
         $('#emailLabel').attr('for', 'inputSuccess2').text('Success');
 
       } else{
         $emailDiv.removeClass('has-success').addClass('has-error');
         $emailSpan.text("invalid").addClass('textFix');
+        $('#emailIcon').addClass('glyphicon-remove');
 
         $('#emailLabel').attr('for', 'inputSuccess2').text('Please Enter a vaild Email');
       }
@@ -112,12 +123,14 @@ function emptyPassword (password) {
       } else if ($confirm.val().toString() === $password){
         $confirmDiv.removeClass('has-error').addClass('has-success');
         $confirmSpan.text("good").addClass('textFix');
+        $('#confirmIcon').removeClass('glyphicon-remove').addClass('glyphicon-ok');
 
         $('#confirmLabel').attr('for', 'inputSuccess2').text('Success');
 
       } else {
         $confirmDiv.removeClass('has-success').addClass('has-error');
         $confirmSpan.text("invalid").addClass('textFix');
+        $('#confirmIcon').addClass('glyphicon-remove');
 
         $('#confirmLabel').attr('for', 'inputError2').text('Passwords Do Not Match');
       }
@@ -131,10 +144,12 @@ function emptyPassword (password) {
       $securityDiv.removeClass('has-error').addClass('has-success');
       $securitySpan.text("good").addClass('textFix');
       $('#securityLabel').attr('for', 'inputSuccess2').text('Success');
+      $('#securityIcon').removeClass('glyphicon-remove').addClass('glyphicon-ok');
       }else{
       $securityDiv.removeClass('has-success').addClass('has-error');
       $securitySpan.text("invalid").addClass('textFix');
       $('#securityLabel').attr('for', 'inputError2').text('Cannot Be Empty');
+      $('#securityIcon').addClass('glyphicon-remove');
       }
 
   });
