@@ -18,24 +18,22 @@ $(document).ready(function($) {
   function noPassword (user_input) {
     if (user_input == 'password') {
       $('#passwordLabel').text("Your password cannot be password!");
+        $('#passwordSpan').text("invalid").addClass('textFix');
     } else {
       $('#passwordLabel').attr('for', 'inputError2').text('Must Be 8 characters long and include 2 numbers and 2 special characters');
     };
   }
 //checks the password validation is 2 numbers 2 special characters and 8 letters :)
   function patternMatcher (password) {
-    // Abandon all hope, ye who enter here.
-    // here be dragons
     var pattern = /^.*(?=.{6,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$@%&? "]).*$/;
       return pattern.test(password);
  }
 
-function emptyPassword (password) {
-  // body...
-}
 
 //checks to see if the password is and email!
  function validateEmail(email) {
+  // Abandon all hope, ye who enter here.
+    // here be dragons
     var emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       if (emailRegex.test(email) == true){
         $('#passwordLabel').text("Your password cannot be an email!");
@@ -59,12 +57,22 @@ function emptyPassword (password) {
       $('#passwordLabel').attr('for', 'inputSuccess2').text('Success');
       $('#passwordIcon').removeClass('glyphicon-remove glyphicon-warning-sign').addClass('glyphicon-ok')
 
+
+
 //Check to see if greater than 8 chars also warn
-    } else if (password.length >= 8  && !validateEmail(password) && noPassword(password)){
+    }else if ( noPassword(password)) {
+      throw "Hell"
+      $passwordSpan.text("invalid").addClass('textFix');
+      noPassword(password)
+
+    } else if (password.length >= 9  && !validateEmail(password)){
       $passwordDiv.removeClass('has-error has-success').addClass('has-warning');
       $passwordSpan.text("fair").addClass('textFix');
       $('#passwordLabel').attr('for', 'inputWarning2').text('Add another number or special character');
-      $('#passwordIcon').removeClass('glyphicon-remove')
+      $('#passwordIcon').removeClass('glyphicon-remove glyphicon-ok')
+
+
+
 //Finally throw Error!
     } else if (password.length === 0 ){
       $passwordDiv.removeClass('has-warning has-success').addClass('has-error');
@@ -76,10 +84,21 @@ function emptyPassword (password) {
       $passwordSpan.text("weak").addClass('textFix');
       $('#passwordIcon').addClass('glyphicon-remove');
 
-      noPassword(password);
       validateEmail(password);
     }
   });
+
+
+
+
+
+
+
+
+
+
+
+
 
   $email.on('keyup', function() {
    var $emailSpan = $('#emailSpan');
