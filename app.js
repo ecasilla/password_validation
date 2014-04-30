@@ -60,11 +60,11 @@ function emptyPassword (password) {
       $('#passwordIcon').removeClass('glyphicon-remove glyphicon-warning-sign').addClass('glyphicon-ok')
 
 //Check to see if greater than 8 chars also warn
-    } else if (password.length >= 8  && !validateEmail(password)){
+    } else if (password.length >= 8  && !validateEmail(password) && noPassword(password)){
       $passwordDiv.removeClass('has-error has-success').addClass('has-warning');
       $passwordSpan.text("fair").addClass('textFix');
       $('#passwordLabel').attr('for', 'inputWarning2').text('Add another number or special character');
-      $('#passwordIcon').removeClass('glyphicon-remove').addClass('glyphicon-warning-sign');
+      $('#passwordIcon').removeClass('glyphicon-remove')
 //Finally throw Error!
     } else if (password.length === 0 ){
       $passwordDiv.removeClass('has-warning has-success').addClass('has-error');
