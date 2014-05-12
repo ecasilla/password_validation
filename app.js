@@ -88,17 +88,8 @@ $(document).ready(function($) {
     }
   });
 
-
-
-
-
-
-
-
-
-
-
-
+// ******************************************************
+// *********************EMAIL FEILD*********************
 
   $email.on('keyup', function() {
    var $emailSpan = $('#emailSpan');
@@ -130,7 +121,20 @@ $(document).ready(function($) {
       }
   });
 
+// ***************************************************************
+// *************CONFIRMATION FEILD****************************
 
+$confirm.on('focusout', function() {
+  var $confirmSpan = $('#confirmSpan');
+  var $password = $('#password').val();
+  var $confirmDiv = $("#confirmDiv");
+
+  if ($confirm.val() === '') {
+    $confirmDiv.removeClass('has-success').addClass('has-error');
+    $confirmSpan.text("invalid").addClass('textFix');
+    $('#confirmLabel').attr('for', 'inputError2').text('Password cannot be empty');
+  };
+})
 
   $confirm.on('keyup',function() {
       var $confirmSpan = $('#confirmSpan');
@@ -142,10 +146,6 @@ $(document).ready(function($) {
         $confirmSpan.text(" ").addClass('textFix');
         $('#confirmIcon').removeClass('glyphicon-remove');
         $('#confirmLabel').attr('for', 'inputError2').text('');
-
-        //$confirmDiv.removeClass('has-success').addClass('has-error');
-        //$confirmSpan.text("invalid").addClass('textFix');
-        //$('#confirmLabel').attr('for', 'inputError2').text('Password cannot be empty');
 
       } else if ($confirm.val().toString() === $password){
         $confirmDiv.removeClass('has-error').addClass('has-success');
@@ -164,6 +164,8 @@ $(document).ready(function($) {
         console.log("")
       }
   });
+
+
 
   $security.on('keyup', function() {
       var $securityDiv = $('#securityDiv');
