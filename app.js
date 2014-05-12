@@ -68,7 +68,7 @@ $(document).ready(function($) {
     } else if (password.length >= 9  && !validateEmail(password)){
       $passwordDiv.removeClass('has-error has-success').addClass('has-warning');
       $passwordSpan.text("fair").addClass('textFix');
-      $('#passwordLabel').attr('for', 'inputWarning2').text('Add another number or special character');
+      $('#passwordLabel').attr('for', 'inputWarning2').text('Please add another number or special character like !@#$%^&()');
       $('#passwordIcon').removeClass('glyphicon-remove glyphicon-ok')
 
 
@@ -108,36 +108,44 @@ $(document).ready(function($) {
 
     if ($email.val().length === 0) {
         $emailDiv.removeClass('has-success').addClass('has-error');
-        $emailSpan.text("invalid").addClass('textFix');
+        // $emailSpan.text("invalid").addClass('textFix');
 
         $('#emailLabel').attr('for', 'inputError2').text('Email cannot be empty');
     } else if ( emailRegex.test($email.val()) ){
         $emailDiv.removeClass('has-error').addClass('has-success');
-        $emailSpan.text("good").addClass('textFix');
+        // $emailSpan.text("good").addClass('textFix');
         $('#emailIcon').removeClass('glyphicon-remove').addClass('glyphicon-ok')
 
 
         $('#emailLabel').attr('for', 'inputSuccess2').text('Success');
 
-      } else{
+      } else if ($email.val().length > 5){
         $emailDiv.removeClass('has-success').addClass('has-error');
-        $emailSpan.text("invalid").addClass('textFix');
+        // $emailSpan.text("invalid").addClass('textFix');
         $('#emailIcon').addClass('glyphicon-remove');
 
         $('#emailLabel').attr('for', 'inputSuccess2').text('Please Enter a vaild Email');
+      } else{
+
       }
   });
+
+
 
   $confirm.on('keyup',function() {
       var $confirmSpan = $('#confirmSpan');
       var $password = $('#password').val();
       var $confirmDiv = $("#confirmDiv");
 
-      if ($confirm.val() === "") {
-        $confirmDiv.removeClass('has-success').addClass('has-error');
-        $confirmSpan.text("invalid").addClass('textFix');
+      if ($confirm.val().length < 1 ) {
+        $confirmDiv.removeClass('has-success has-error')
+        $confirmSpan.text(" ").addClass('textFix');
+        $('#confirmIcon').removeClass('glyphicon-remove');
+        $('#confirmLabel').attr('for', 'inputError2').text('');
 
-        $('#confirmLabel').attr('for', 'inputError2').text('Password cannot be empty');
+        //$confirmDiv.removeClass('has-success').addClass('has-error');
+        //$confirmSpan.text("invalid").addClass('textFix');
+        //$('#confirmLabel').attr('for', 'inputError2').text('Password cannot be empty');
 
       } else if ($confirm.val().toString() === $password){
         $confirmDiv.removeClass('has-error').addClass('has-success');
@@ -146,12 +154,14 @@ $(document).ready(function($) {
 
         $('#confirmLabel').attr('for', 'inputSuccess2').text('Success');
 
-      } else {
+      } else if ($confirm.val().length >= 4) {
         $confirmDiv.removeClass('has-success').addClass('has-error');
         $confirmSpan.text("invalid").addClass('textFix');
         $('#confirmIcon').addClass('glyphicon-remove');
 
         $('#confirmLabel').attr('for', 'inputError2').text('Passwords Do Not Match');
+      } else{
+        console.log("")
       }
   });
 
