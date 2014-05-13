@@ -133,6 +133,7 @@ $confirm.on('focusout', function() {
     $confirmDiv.removeClass('has-success').addClass('has-error');
     $confirmSpan.text("invalid").addClass('textFix');
     $('#confirmLabel').attr('for', 'inputError2').text('Password cannot be empty');
+    $('#confirmIcon').removeClass('glyphicon-ok').addClass('glyphicon-remove');
   };
 })
 
@@ -185,4 +186,4 @@ $confirm.on('focusout', function() {
 
   });
 
-  });//DOCUMENT
+  });//Document Ready
